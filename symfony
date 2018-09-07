@@ -1,0 +1,10 @@
+<?php
+
+use Acme\SymfonyHelperCommand;
+use Symfony\Component\Console\Application;
+
+require "vendor/autoload.php";
+
+$app = new Application('Symfony helper commands', '1.0');
+$app->add(new SymfonyHelperCommand());
+$app->run();
