@@ -1,0 +1,10 @@
+<?php
+
+use Acme\DefaultCommand;
+use Symfony\Component\Console\Application;
+
+require "vendor/autoload.php";
+
+$app = new Application("Console Application using Symfony", '1.0');
+$app->add(new DefaultCommand());
+$app->run();
