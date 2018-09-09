@@ -13,6 +13,7 @@ class SymfonyHelperCommand extends Command
 
     private static $source = "src/DefaultCommand.php";
     private $file;
+    private $contents = [];
 
     public function configure()
     {
