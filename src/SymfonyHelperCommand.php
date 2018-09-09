@@ -12,6 +12,7 @@ class SymfonyHelperCommand extends Command
 {
 
     private static $source = "src/DefaultCommand.php";
+    private $file;
 
     public function configure()
     {
@@ -27,5 +28,21 @@ class SymfonyHelperCommand extends Command
         $destination = sprintf("%s.php", $input->getArgument('path'));
         @copy(self::$source, $destination);
         $output->writeln('<info>Finished! Enjoy</info>');
+    }
+
+    /**
+     * read file and returns it
+     * 
+     * @param  String $filename location where the file will be read
+     * @param  OutputInterface $output   writing in the console
+     * @param  String $mode
+     * @return file pointer resources           
+     */
+    public function readFromFile($filename, $output, $mode = "r", $errorMessage = '<error>Unable to read file</error>')
+    {
+        $file = fopen($filename, "r") or $output->writeln($errorMessage);
+        $output->writeln('<comment>Started processing the file...</comment>');
+
+        return $file;
     }
 }
